@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,20 +19,19 @@ public class Controller {
 
     @GetMapping("/{requestedId}")
     public ResponseEntity<Contacts> getContact(@PathVariable String requestedId){
-        Iterable<Contacts> asd=contactRepository.findAll();
-        Optional<Contacts> optContact = contactRepository.findById(requestedId);
-        if (optContact.isPresent()) {
+        Optional<Contacts> optContact = contactRepository.findById(requestedId); //get by id
+        if (optContact.isPresent()) { // if there is a result
             Contacts contact=optContact.get();
-            return ResponseEntity.ok(contact);
-        } else {
+            return ResponseEntity.ok(contact); //return ok(200) and the result
+        } else { //else 404
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping
-    private ResponseEntity<Void> createContact(@RequestBody Contacts newContact, UriComponentsBuilder ucb) {
-        Contacts addContact = contactRepository.save(newContact);
-        URI locationOfNewContact = ucb.path("contacts/{id}").buildAndExpand(addContact.getAddress()).toUri();
-        return ResponseEntity.created(locationOfNewContact).build();
+    private ResponseEntity<Void> createContact(@RequestBody Contacts newContact, UriComponentsBuilder ucb) { //the body contains the new object
+        Contacts addContact = contactRepository.save(newContact); //save the new object
+        URI locationOfNewContact = ucb.path("contacts/{id}").buildAndExpand(addContact.getAddress()).toUri(); //get the location of the new object
+        return ResponseEntity.created(locationOfNewContact).build(); //created response(201) and return the location of the new contact
     }
 }

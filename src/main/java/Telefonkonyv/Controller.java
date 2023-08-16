@@ -34,4 +34,19 @@ public class Controller {
         URI locationOfNewContact = ucb.path("contacts/{id}").buildAndExpand(addContact.getAddress()).toUri(); //get the location of the new object
         return ResponseEntity.created(locationOfNewContact).build(); //created response(201) and return the location of the new contact
     }
+
+    @PutMapping("/{requestedId}")
+    private ResponseEntity<Void> putContact(@PathVariable String requestedId, @RequestBody Contacts contactUpdate) {
+        Optional<Contacts> optContact = contactRepository.findById(requestedId);
+        if (optContact.isPresent()) {
+            Contacts contact=optContact.get();
+            contact.setEmail(contactUpdate.getEmail());
+            contact.setFirstName(contactUpdate.getFirstName());
+            contact.setLastName(contactUpdate.getLastName());
+            contact.setNotes(contactUpdate.getNotes());
+            contactRepository.save(contact);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

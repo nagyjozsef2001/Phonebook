@@ -49,4 +49,16 @@ public class Controller {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @DeleteMapping("/{id}")
+    private ResponseEntity<Void> deleteContact(@PathVariable String id) {
+        Optional<Contacts> optContact = contactRepository.findById(id);
+        if (optContact.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        else{
+            contactRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }
+    }
 }

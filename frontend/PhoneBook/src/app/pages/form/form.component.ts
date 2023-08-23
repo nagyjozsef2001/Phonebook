@@ -42,13 +42,17 @@ export class FormComponent implements OnInit{
   }
 
   submitUpdate(){
-    this.crudService.submitUpdate(this.applyForm.value.phoneNumber ?? '',
-    this.applyForm.value.firstName ?? '',
-    this.applyForm.value.lastName ?? '',
-    this.applyForm.value.email ?? '',
-    this.applyForm.value.notes ?? ''
-    );
-  }
+    this.createContact = {
+      phoneNumber:this.applyForm.value.phoneNumber ?? '',
+      firstName: this.applyForm.value.firstName ?? '',
+      lastName: this.applyForm.value.lastName ?? '',
+      email: this.applyForm.value.email ?? '',
+      notes: this.applyForm.value.notes ?? ''
+    }
+    this.crudService.modifyContact(this.task,this.createContact).subscribe((result: any) => {
+      console.log(result);
+  });;
+}
 
   submitCreate(){
     this.createContact = {
@@ -58,7 +62,6 @@ export class FormComponent implements OnInit{
       email: this.applyForm.value.email ?? '',
       notes: this.applyForm.value.notes ?? ''
     }
-    console.log(this.createContact);
     this.crudService.submitCreate(this.createContact).subscribe((result: any) => {
       console.log(result);
     });;

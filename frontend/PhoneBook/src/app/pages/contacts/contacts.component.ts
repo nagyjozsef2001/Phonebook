@@ -35,9 +35,13 @@ export class ContactsComponent implements OnInit{
     location.reload();
   }
 
-  openFormInNewWindow(phoneNumber: string) {
+  openModify(phoneNumber: string) {
     this.router.navigate(['/form'], {queryParams: {phone: phoneNumber}});
 
+  }
+
+  createContact(){
+    this.router.navigate(['/form'], { queryParams : { phone: 'post' }});
   }
 
   onSearchTextEntered(searchValue: string){

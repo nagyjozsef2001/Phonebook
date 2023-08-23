@@ -7,14 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class CrudService {
 
-  updatedContact:any = {
-    "phoneNumber": "",
-    "firstName": "",
-    "lastName": "",
-    "email": "",
-    "notes": null
-  }
-
   constructor(private http:HttpClient) { }
 
   getAllContacts():Observable<any[]>{
@@ -22,18 +14,7 @@ export class CrudService {
   }
 
   modifyContact(phoneNumber: string,obj:any):Observable<any>{
-    console.log("put");
     return this.http.put<any>(`http://localhost:3000/contacts/${phoneNumber}`, obj);
-  }
-
-  submitUpdate(phoneNumber: string, firstName: string, lastName: string, email:string, notes: string){
-    this.updatedContact.phoneNumber=phoneNumber;
-    this.updatedContact.firstName=firstName;
-    this.updatedContact.lastName=lastName;
-    this.updatedContact.email=email;
-    this.updatedContact.notes=notes;
-    this.modifyContact(phoneNumber, this.updatedContact).subscribe((result: any) => {
-    });
   }
 
   submitCreate(obj:any){

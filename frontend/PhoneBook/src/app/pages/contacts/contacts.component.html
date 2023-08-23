@@ -1,4 +1,5 @@
 <section id="contact">
+    <button class="delete-button" (click)="createContact()">Create Contact!</button>
     <app-searchbar (searchTextChanged)="onSearchTextEntered($event)" (searchSelected)="onSearchTypeChanged($event)"></app-searchbar>
     <div class="container" *ngFor="let contact of contactList"> <!-- looping through the contacts and generates a card for each-->
         <!-- if we dont type to the searchbox we see every contact otherwise it checks the radio button(how we search, by name or by phone number) and then checks if the entered text is matching with one of the contacts details-->
@@ -6,7 +7,7 @@
             <h2 class="contact-name">{{contact.lastName+" "+contact.firstName}}</h2>
             <p class="contact-email">john.doe@example.com</p>
             <p class="contact-phone">{{contact.phoneNumber}}</p>
-            <button class="modify-button" (click)="openFormInNewWindow(contact.phoneNumber)">Modify!</button>
+            <button class="modify-button" (click)="openModify(contact.phoneNumber)">Modify!</button>
             <button class="delete-button" (click)="deleteAContact(contact.phoneNumber)">Delete!</button>
         </div>
     </div>

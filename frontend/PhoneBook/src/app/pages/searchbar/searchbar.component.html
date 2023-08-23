@@ -1,1 +1,9 @@
-<p>searchbar works!</p>
+<div class="searchbar">
+    <input type="text" placeholder="searchbar" [(ngModel)]="enteredText" (input)="onSearchTextChanged()">
+    <br>
+    <label for="byName">By Name</label><br>
+    <input type="radio" id="byName" name="searchBy" value="By Name" (change)="onSearchChange('byName')" checked>
+    <br>
+    <label for="byPhoneNumber">By Phone Number</label><br>
+    <input type="radio" id="byPhoneNumber" name="searchBy" value="By Phone Number" (change)="onSearchChange('byPhoneNumber')">
+</div>

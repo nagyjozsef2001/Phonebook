@@ -20,12 +20,12 @@ const routes: Routes = [
     component: NavbarComponent
   },
   {
-    path:'form',
-    component: FormComponent
+    path: 'details',
+    component: DetailsComponent
   },
   {
-    path: "details",
-    component: DetailsComponent
+    path: 'form',
+    component: FormComponent
   },
   {
     path: "**",

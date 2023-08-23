@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { SearchbarComponent } from './pages/searchbar/searchbar.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { FormComponent } from './pages/form/form.component';
+import { DetailsComponent } from './pages/details/details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormComponent } from './pages/form/form.component';
     HomeComponent,
     SearchbarComponent,
     NavbarComponent,
-    FormComponent
+    FormComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

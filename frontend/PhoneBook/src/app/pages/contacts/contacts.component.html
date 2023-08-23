@@ -1,1 +1,22 @@
-<p>contacts works!</p>
+<!-- <section id="contact">
+    <app-searchbar (searchTextChanged)="onSearchTextEntered($event)" (searchSelected)="onSearchTypeChanged($event)"></app-searchbar>
+    <div class="container" *ngFor="let contact of contactList">
+        <div class="contact-card" *ngIf="(searchText ==='' || (searchType === 'byName' && (contact.firstName + contact.lastName).toLowerCase().includes(searchText.toLocaleLowerCase())))  || (searchType === 'byPhoneNumber' && contact.phoneNumber.includes(searchText))" >
+            <h6 class="card-header">{{contact.lastName+" "+contact.firstName}}</h6>
+            <i class="phonenumber">{{contact.phoneNumber}}</i>
+            <p>{{contact.notes}}</p>
+            <button class="modify-button" (click)="openFormInNewWindow(contact.phoneNumber)">Modify!</button>
+            <button class="delete-button" (click)="deleteAContact(contact.phoneNumber)">Delete!</button>
+        </div>
+    </div>
+
+</section> -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-card" *ngFor="let contact of contactList">
+            <h2 class="contact-name">John Doe</h2>
+            <p class="contact-email">john.doe@example.com</p>
+            <p class="contact-phone">123-456-7890</p>
+        </div>
+    </div>
+</section>

@@ -9,6 +9,9 @@ import { SearchbarComponent } from './pages/searchbar/searchbar.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { FormComponent } from './pages/form/form.component';
 import { DetailsComponent } from './pages/details/details.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { DetailsComponent } from './pages/details/details.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -26,6 +26,7 @@ export class ContactsComponent implements OnInit{
     this.crudService.getAllContacts().subscribe((result:any) => {
       this.contactList = result;
     })
+    console.log("meghivva");
   }
 
   deleteAContact(phoneNumber:string){

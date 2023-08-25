@@ -53,32 +53,21 @@ export class FormComponent implements OnInit{
   }
 
   submitUpdate(){
-    this.createContact = {
-      phoneNumber:this.applyForm.value.phoneNumber ?? '',
-      firstName: this.applyForm.value.firstName ?? '',
-      lastName: this.applyForm.value.lastName ?? '',
-      email: this.applyForm.value.email ?? '',
-      notes: this.applyForm.value.notes ?? ''
-    }
-    this.addressContact = {
-      country: this.applyForm.value.country ?? '',
-      postalCode: this.applyForm.value.postalCode ?? '',
-      shire: this.applyForm.value.shire ?? '',
-      city: this.applyForm.value.city ?? '',
-      street: this.applyForm.value.street ?? '',
-      number: this.applyForm.value.number ?? '',
-      stairs: this.applyForm.value.stairs ?? '',
-      floor: this.applyForm.value.floor ?? '',
-      apartment: this.applyForm.value.apartment ?? ''
-    }
-    this.createContact.address = this.addressContact;
-    console.log(this.createContact);
+    this.initialize_contact_obj();
     this.crudService.modifyContact(this.task,this.createContact).subscribe((result: any) => {
       console.log(result);
   });;
 }
 
   submitCreate(){
+    this.initialize_contact_obj();
+    this.crudService.submitCreate(this.createContact).subscribe((result: any) => {
+      console.log(result);
+    });;
+
+  }
+
+  initialize_contact_obj(){
     this.createContact = {
       phoneNumber:this.applyForm.value.phoneNumber ?? '',
       firstName: this.applyForm.value.firstName ?? '',
@@ -97,12 +86,7 @@ export class FormComponent implements OnInit{
       floor: this.applyForm.value.floor ?? '',
       apartment: this.applyForm.value.apartment ?? ''
     }
-    console.log(this.createContact);
     this.createContact.address = this.addressContact;
-    this.crudService.submitCreate(this.createContact).subscribe((result: any) => {
-      console.log(result);
-    });;
-
   }
 }
 

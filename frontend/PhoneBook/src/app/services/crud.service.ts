@@ -13,15 +13,15 @@ export class CrudService {
     return this.http.get<any[]>("http://localhost:3000/contacts");
   }
 
-  modifyContact(phoneNumber: string,obj:any):Observable<any>{
-    return this.http.put<any>(`http://localhost:3000/contacts/${phoneNumber}`, obj);
+  modifyContact(id:number,obj:any):Observable<any>{
+    return this.http.put<any>(`http://localhost:3000/contacts/${id}`, obj);
   }
 
   submitCreate(obj:any){
     return this.http.post<any>(`http://localhost:3000/contacts`, obj);
   }
 
-  deleteContact(phoneNumber:string):Observable<any>{
-    return this.http.delete<any>(`http://localhost:3000/contacts/${phoneNumber}`);
+  deleteContact(id:number):Observable<any>{
+    return this.http.delete<any>(`http://localhost:3000/contacts/${id}`);
   }
 }

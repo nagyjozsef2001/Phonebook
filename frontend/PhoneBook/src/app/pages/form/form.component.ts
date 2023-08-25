@@ -19,7 +19,7 @@ export class FormComponent implements OnInit{
     notes: new FormControl('')
   });
 
-  task:string="";
+  task:any="";
 
   createContact:any = {};
 
@@ -28,7 +28,7 @@ export class FormComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.task=params["phone"];
+      this.task=params["contactId"];
     });
   }
 

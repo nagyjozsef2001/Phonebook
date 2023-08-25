@@ -24,7 +24,7 @@ public class Controller {
     }
 
     @GetMapping("/{requestedId}")
-    public ResponseEntity<Contacts> getContact(@PathVariable String requestedId){
+    public ResponseEntity<Contacts> getContact(@PathVariable Integer requestedId){
         Optional<Contacts> optContact = contactRepository.findById(requestedId); //get by id
         if (optContact.isPresent()) { // if there is a result
             Contacts contact=optContact.get();
@@ -53,10 +53,11 @@ public class Controller {
     }
 
     @PutMapping("/{requestedId}")
-    private ResponseEntity<Void> putContact(@PathVariable String requestedId, @RequestBody Contacts contactUpdate) {
+    private ResponseEntity<Void> putContact(@PathVariable Integer requestedId, @RequestBody Contacts contactUpdate) {
         Optional<Contacts> optContact = contactRepository.findById(requestedId);
         if (optContact.isPresent()) {
             Contacts contact=optContact.get();
+            contact.setPhoneNumber(contactUpdate.getPhoneNumber());
             contact.setEmail(contactUpdate.getEmail());
             contact.setFirstName(contactUpdate.getFirstName());
             contact.setLastName(contactUpdate.getLastName());
@@ -68,7 +69,7 @@ public class Controller {
     }
 
     @DeleteMapping("/{id}")
-    private ResponseEntity<Void> deleteContact(@PathVariable String id) {
+    private ResponseEntity<Void> deleteContact(@PathVariable Integer id) {
         Optional<Contacts> optContact = contactRepository.findById(id);
         if (optContact.isEmpty()) {
             return ResponseEntity.notFound().build();

@@ -6,6 +6,16 @@ import jakarta.persistence.*;
 @Table(name="CONTACTS")
 public class Contacts {
     @Id
+    @SequenceGenerator(
+            name = "contacts_id_sequence",
+            sequenceName = "contacts_id_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "contacts_id_sequence"
+    )
+    private Integer id;
     private String phoneNumber;
     private String firstName;
     private String lastName;
@@ -20,7 +30,8 @@ public class Contacts {
     @JoinColumn(name = "addressId")
     private Address address;
 
-    public Contacts(String phoneNumber, String firstName, String lastName, String email, String notes) {
+    public Contacts(Integer id,String phoneNumber, String firstName, String lastName, String email, String notes) {
+        this.id=id;
         this.phoneNumber = phoneNumber;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -103,5 +114,13 @@ public class Contacts {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

@@ -7,8 +7,8 @@
             <h2 class="contact-name">{{contact.lastName+" "+contact.firstName}}</h2>
             <p class="contact-email">john.doe@example.com</p>
             <p class="contact-phone">{{contact.phoneNumber}}</p>
-            <button class="modify-button" (click)="openModify(contact.phoneNumber)">Modify!</button>
-            <button class="delete-button" (click)="deleteAContact(contact.phoneNumber)">Delete!</button>
+            <button class="modify-button" (click)="openModify(contact.id)">Modify!</button>
+            <button class="delete-button" (click)="deleteAContact(contact.id)">Delete!</button>
         </div>
     </div>
 </section>

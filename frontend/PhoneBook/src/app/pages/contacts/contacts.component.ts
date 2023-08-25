@@ -28,20 +28,20 @@ export class ContactsComponent implements OnInit{
     })
   }
 
-  deleteAContact(phoneNumber:string){
-    this.crudService.deleteContact(phoneNumber).subscribe((result) =>{
+  deleteAContact(id:number){
+    this.crudService.deleteContact(id).subscribe((result) =>{
       console.log(result);
     });
     location.reload();
   }
 
-  openModify(phoneNumber: string) {
-    this.router.navigate(['/form'], {queryParams: {phone: phoneNumber}});
+  openModify(id:number) {
+    this.router.navigate(['/form'], {queryParams: {contactId:id}});
 
   }
 
   createContact(){
-    this.router.navigate(['/form'], { queryParams : { phone: 'post' }});
+    this.router.navigate(['/form'], { queryParams : { contactId: 'post' }});
   }
 
   onSearchTextEntered(searchValue: string){

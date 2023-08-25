@@ -1,0 +1,38 @@
+.searchbar {
+    text-align: center;
+    padding: 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+input[type="text"] {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #555;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+label {
+    font-size: 14px;
+    color: #555;
+}
+
+br {
+    display: none;
+}
+
+input[type="radio"]:checked + label {
+    font-weight: bold;
+}

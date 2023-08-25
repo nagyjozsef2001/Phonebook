@@ -1,79 +1,80 @@
 <form [formGroup]="applyForm" (submit)="operationType()">
-    <label for="phone-number">Phone Number</label>
-    <input id="phone-number" type="text" formControlName="phoneNumber">
-    <br>
-    <br>
+    <div class="form-container">
+        <div class="contact-details">
+            <label for="phone-number">Phone Number</label>
+            <input id="phone-number" type="text" formControlName="phoneNumber">
+            <br>
+            <br>
 
-    <label for="first-name">First name</label>
-    <input id="first-name" type="text" formControlName="firstName">
-    <br>
-    <br>
+            <label for="first-name">First name</label>
+            <input id="first-name" type="text" formControlName="firstName">
+            <br>
+            <br>
 
-    <label for="last-name">Last name</label>
-    <input id="last-name" type="text" formControlName="lastName">
-    <br>
-    <br>
+            <label for="last-name">Last name</label>
+            <input id="last-name" type="text" formControlName="lastName">
+            <br>
+            <br>
 
-    <label for="email">Email</label>
-    <input id="email" type="email" formControlName="email">
-    <br>
-    <br>
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email">
+            <br>
+            <br>
 
-    <label for="notes">Notes</label>
-    <input id="notes" type="text" formControlName="notes">
-    <br>
-    <br>
+            <label for="notes">Notes</label>
+            <input id="notes" type="text" formControlName="notes">
+        </div>
 
-    <p>Address: </p><br>
+        <div class="address-form">
+            <label for="country">Country</label>
+            <input id="country" type="text" formControlName="country">
+            <br>
+            <br>
 
-    <label for="country">Country</label>
-    <input id="country" type="text" formControlName="country">
-    <br>
-    <br>
+            <label for="postalCode">Postalcode</label>
+            <input id="postalCode" type="text" formControlName="postalCode">
+            <br>
+            <br>
 
-    <label for="postalCode">Postalcode</label>
-    <input id="postalCode" type="text" formControlName="postalCode">
-    <br>
-    <br>
+            <label for="shire">State</label>
+            <input id="shire" type="text" formControlName="shire">
+            <br>
+            <br>
 
-    <label for="shire">State</label>
-    <input id="shire" type="text" formControlName="shire">
-    <br>
-    <br>
+            <label for="city">City</label>
+            <input id="city" type="text" formControlName="city">
+            <br>
+            <br>
 
-    <label for="city">City</label>
-    <input id="city" type="text" formControlName="city">
-    <br>
-    <br>
+            <label for="street">Street</label>
+            <input id="street" type="text" formControlName="street">
+            <br>
+            <br>
 
-    <label for="street">Street</label>
-    <input id="street" type="text" formControlName="street">
-    <br>
-    <br>
+            <label for="number">Number</label>
+            <input id="number" type="text" formControlName="number">
+            <br>
+            <br>
 
-    <label for="number">Number</label>
-    <input id="number" type="text" formControlName="number">
-    <br>
-    <br>
+            <label for="stairs">Stairs</label>
+            <input id="stairs" type="text" formControlName="stairs">
+            <br>
+            <br>
 
-    <label for="stairs">Stairs</label>
-    <input id="stairs" type="text" formControlName="stairs">
-    <br>
-    <br>
+            <label for="floor">Floor</label>
+            <input id="floor" type="text" formControlName="floor">
+            <br>
+            <br>
 
-    <label for="floor">Floor</label>
-    <input id="floor" type="text" formControlName="floor">
-    <br>
-    <br>
+            <label for="apartment">Apartment</label>
+            <input id="apartment" type="text" formControlName="apartment">
+            <br>
+            <br>
 
-    <label for="apartment">Apartment</label>
-    <input id="apartment" type="text" formControlName="apartment">
-    <br>
-    <br>
-
-    <button type="submit" class="primary">Update!</button>
-    <br>
-    <br>
-
+            <button type="submit" class="primary">Done!</button>
+            <br>
+            <br>
+        </div>
+    </div>
 </form>
 

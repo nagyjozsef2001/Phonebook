@@ -1,5 +1,5 @@
 <div class="searchbar">
-    <input type="text" placeholder="searchbar" [(ngModel)]="enteredText" (input)="onSearchTextChanged()">
+    <input type="text" placeholder="Search" [(ngModel)]="enteredText" (input)="onSearchTextChanged()">
     <br>
     <label for="byName">By Name</label><br>
     <input type="radio" id="byName" name="searchBy" value="By Name" (change)="onSearchChange('byName')" checked>

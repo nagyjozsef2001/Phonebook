@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CrudService } from 'src/app/services/crud.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -34,7 +35,7 @@ export class FormComponent implements OnInit{
 
   addressContact:any = {};
 
-  constructor(private crudService: CrudService, private route: ActivatedRoute){
+  constructor(private crudService: CrudService, private route: ActivatedRoute, private redirect:Router){
   }
 
   ngOnInit(): void {
@@ -50,6 +51,7 @@ export class FormComponent implements OnInit{
     else{
       this.submitUpdate();
     }
+    this.redirect.navigate(['/']);
   }
 
   submitUpdate(){

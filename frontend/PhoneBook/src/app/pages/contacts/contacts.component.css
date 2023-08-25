@@ -22,6 +22,36 @@ body, h2, p {
     margin-bottom: 10px;
 }
 
+.modify-button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.modify-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #ff3b30; /* Red background color */
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.delete-button:hover {
+    background-color: #d62c1a; /* Darker red color on hover */
+}
+
 .contact-email {
     font-size: 16px;
     color: #555;
@@ -31,4 +61,19 @@ body, h2, p {
 .contact-phone {
     font-size: 16px;
     color: #555;
+}
+
+.create-button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.create-button:hover {
+    background-color: #0056b3;
 }

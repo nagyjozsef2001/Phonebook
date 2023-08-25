@@ -8,7 +8,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { SearchbarComponent } from './pages/searchbar/searchbar.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { FormComponent } from './pages/form/form.component';
-import { DetailsComponent } from './pages/details/details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -20,8 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     SearchbarComponent,
     NavbarComponent,
-    FormComponent,
-    DetailsComponent
+    FormComponent
   ],
   imports: [
     BrowserModule,

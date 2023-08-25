@@ -4,7 +4,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { FormComponent } from './pages/form/form.component';
-import { DetailsComponent } from './pages/details/details.component';
 
 const routes: Routes = [
   {
@@ -18,10 +17,6 @@ const routes: Routes = [
   {
     path: 'navbar',
     component: NavbarComponent
-  },
-  {
-    path: 'details',
-    component: DetailsComponent
   },
   {
     path: 'form',

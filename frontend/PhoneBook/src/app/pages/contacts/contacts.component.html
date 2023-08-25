@@ -1,12 +1,23 @@
 <section id="contact">
     <button class="create-button" (click)="createContact()">Create Contact!</button>
     <app-searchbar (searchTextChanged)="onSearchTextEntered($event)" (searchSelected)="onSearchTypeChanged($event)"></app-searchbar>
+    <br>
     <div class="container" *ngFor="let contact of contactList"> <!-- looping through the contacts and generates a card for each-->
         <!-- if we dont type to the searchbox we see every contact otherwise it checks the radio button(how we search, by name or by phone number) and then checks if the entered text is matching with one of the contacts details-->
         <div class="contact-card" *ngIf="(searchText ==='' || (searchType === 'byName' && (contact.firstName + contact.lastName).toLowerCase().includes(searchText.toLocaleLowerCase())))  || (searchType === 'byPhoneNumber' && contact.phoneNumber.includes(searchText))">
             <h2 class="contact-name">{{contact.lastName+" "+contact.firstName}}</h2>
-            <p class="contact-email">john.doe@example.com</p>
+            <p class="contact-email">{{contact.email}}</p>
             <p class="contact-phone">{{contact.phoneNumber}}</p>
+            <p class="contact-notes">{{contact.notes}}</p>
+            <p class="address-country">{{contact.address.country}}</p>
+            <p class="address-postalcode">{{contact.address.postalCode}}</p>
+            <p class="address-shire">{{contact.address.shire}}</p>
+            <p class="address-city">{{contact.address.city}}</p>
+            <p class="address-street">{{contact.address.street}}</p>
+            <p class="address-number">{{contact.address.number}}</p>
+            <p class="address-stairs">{{contact.address.stairs}}</p>
+            <p class="address-floor">{{contact.address.floor}}</p>
+            <p class="address-apartment">{{contact.address.apartment}}</p>
             <button class="modify-button" (click)="openModify(contact.id)">Edit!</button>
             <button class="delete-button" (click)="deleteAContact(contact.id)">Delete!</button>
         </div>

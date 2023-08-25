@@ -1,5 +1,6 @@
 package Telefonkonyv;
 
+import Telefonkonyv.DataJPA.Address;
 import Telefonkonyv.DataJPA.Contacts;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,9 +19,11 @@ import java.util.Optional;
 @RequestMapping("/contacts")
 public class Controller {
     private final ContactRepository contactRepository;
+    private final AddressRepository addressRepository;
 
-    public Controller(ContactRepository contactRepository) {
+    public Controller(ContactRepository contactRepository, AddressRepository addressRepository) {
         this.contactRepository = contactRepository;
+        this.addressRepository=addressRepository;
     }
 
     @GetMapping("/{requestedId}")
@@ -47,6 +50,11 @@ public class Controller {
 
     @PostMapping
     private ResponseEntity<Void> createContact(@RequestBody Contacts newContact, UriComponentsBuilder ucb) { //the body contains the new object
+        Address address=newContact.getAddress();
+        if (address!=null){
+            addressRepository.save(address);
+            newContact.setAddress(address);
+        }
         Contacts addContact = contactRepository.save(newContact); //save the new object
         URI locationOfNewContact = ucb.path("contacts/{id}").buildAndExpand(addContact.getAddress()).toUri(); //get the location of the new object
         return ResponseEntity.created(locationOfNewContact).build(); //created response(201) and return the location of the new contact

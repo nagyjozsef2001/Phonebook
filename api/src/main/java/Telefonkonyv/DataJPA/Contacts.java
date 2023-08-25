@@ -26,7 +26,7 @@ public class Contacts {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
-    @OneToOne(orphanRemoval = true)
+    @OneToOne(orphanRemoval = true,cascade = CascadeType.ALL)
     @JoinColumn(name = "addressId")
     private Address address;
 

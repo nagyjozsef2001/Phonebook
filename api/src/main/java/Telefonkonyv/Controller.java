@@ -65,6 +65,11 @@ public class Controller {
         Optional<Contacts> optContact = contactRepository.findById(requestedId);
         if (optContact.isPresent()) {
             Contacts contact=optContact.get();
+            Address address=contactUpdate.getAddress();
+            if (address!=null) {
+                addressRepository.save(address);
+                contact.setAddress(address);
+            }
             contact.setPhoneNumber(contactUpdate.getPhoneNumber());
             contact.setEmail(contactUpdate.getEmail());
             contact.setFirstName(contactUpdate.getFirstName());

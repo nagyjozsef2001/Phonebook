@@ -21,9 +21,9 @@ public class SecurityConfig{
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests()
-                .requestMatchers("/contacts/**").authenticated()
-                .requestMatchers("/createOwner").permitAll()
-                .requestMatchers("/login").permitAll()
+                .requestMatchers("/contacts/**").authenticated() //needs authorization
+                .requestMatchers("/createOwner").permitAll() //access without authorization
+                .requestMatchers("/login").permitAll() //access without authorization
                 .and()
                 .csrf().disable()
                 .cors().and().httpBasic();
@@ -36,7 +36,7 @@ public class SecurityConfig{
     }
 
     @Bean
-    CorsConfigurationSource corsConfigurationSource(){
+    CorsConfigurationSource corsConfigurationSource(){ //setting the allowed methods and origins
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200/"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));

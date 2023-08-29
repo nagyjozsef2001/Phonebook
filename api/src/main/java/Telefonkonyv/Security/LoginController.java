@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     @GetMapping("/login")
-    public void login(){
+    public void login(){//used for login
+        ///custom login
     }
 
 }

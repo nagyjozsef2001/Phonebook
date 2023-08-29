@@ -45,9 +45,9 @@ public class Controller {
     }
 
     @GetMapping("/contacts")
-    public ResponseEntity<List<Contacts>> findAll(Pageable pageable, Principal principal) {
+    public ResponseEntity<List<Contacts>> findAll(Pageable pageable, Principal principal) { //to get back all the contacts as an array
         Page<Contacts> page = contactRepository.findByOwner(principal.getName(),
-                PageRequest.of(
+                PageRequest.of( //setting the page size
                         pageable.getPageNumber(),
                         pageable.getPageSize()
                 ));
@@ -56,12 +56,12 @@ public class Controller {
 
     @PostMapping("/contacts/createContact")
     private ResponseEntity<Void> createContact(@RequestBody Contacts newContact, UriComponentsBuilder ucb, Principal principal) { //the body contains the new object
-        Address address=newContact.getAddress();
+        Address address=newContact.getAddress(); //if the new contact has an address
         if (address!=null){
             addressRepository.save(address);
-            newContact.setAddress(address);
+            newContact.setAddress(address); //we need to set it before save
         }
-        Owner principalOwner = ownerRepository.findIdByEmail(principal.getName());
+        Owner principalOwner = ownerRepository.findIdByEmail(principal.getName()); //!!!! adding just to our user
         newContact.setOwner(principalOwner);
         Contacts addContact = contactRepository.save(newContact); //save the new object
         URI locationOfNewContact = ucb.path("contacts/{id}").buildAndExpand(addContact.getId()).toUri(); //get the location of the new object

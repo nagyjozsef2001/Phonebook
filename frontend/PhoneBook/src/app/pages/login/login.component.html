@@ -1,15 +1,12 @@
-
-<div id="formContent">
-    <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
-    <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
-    <!-- Tabs Titles -->
+<br>
+<div id="formContent"  class="login-container">
+    <a href="/"><button class="go-back-button">Cancel</button></a>
     <h3>Login</h3>
 
-    <!-- Login Form -->
-    <form action="@{/login}" method="post" (ngSubmit)="handleLogin()">
-    <input type="text" id="username" [(ngModel)]="username" name="username" placeholder="username">
+    <form action="@{/login}" method="post" (ngSubmit)="handleLogin()" class="login-form">
+    <input type="text" id="username" [(ngModel)]="username" name="username" placeholder="email">
     <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="password">
-    <input type="submit">
+    <button type="submit" class="submit-button">Sign Up!</button>
     </form>
 
 </div>

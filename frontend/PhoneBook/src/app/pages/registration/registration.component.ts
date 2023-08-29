@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
@@ -13,8 +14,7 @@ export class RegistrationComponent {
 
   registrationObj={};
 
-  constructor(private crudService: CrudService){
-
+  constructor(private crudService: CrudService, private router:Router){
   }
 
   handleRegistration(){
@@ -29,6 +29,7 @@ export class RegistrationComponent {
       this.crudService.submitCreateOwner(this.registrationObj).subscribe((result: any) => {
         console.log(result);
       });;
+      this.router.navigate(['/login']); 
     }
     
   }

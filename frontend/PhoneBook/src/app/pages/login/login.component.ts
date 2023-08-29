@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit{
       console.log(this.errorMessage);
       console.log(error);
     });
-    this.router.navigate(['/']);  
+    this.router.navigate(['/contacts']);  
   }
   
 

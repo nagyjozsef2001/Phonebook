@@ -5,6 +5,7 @@ import { ContactsComponent } from './pages/contacts/contacts.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { FormComponent } from './pages/form/form.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
 
 const routes: Routes = [
   {
@@ -28,8 +29,12 @@ const routes: Routes = [
     component:LoginComponent
   },
   {
+    path:'registration',
+    component: RegistrationComponent
+  },
+  {
     path: "**",
-    component: ContactsComponent
+    component: NavbarComponent
   }
 ];
 

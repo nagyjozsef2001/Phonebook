@@ -1,8 +1,12 @@
-<div class="registraion-container">
-    <form (ngSubmit)="handleRegistration()">
+<br>
+<br>
+<br>
+<div class="registration-container">
+    <a href="/"><button class="go-back-button">Cancel</button></a>
+    <form (ngSubmit)="handleRegistration()" class="registration-form">
         <input type="text" id="email" [(ngModel)]="email" name="email" required placeholder="Email" >
         <input type="password" id="password" [(ngModel)]="password" name="password"  required placeholder="Password">
         <input type="password" id="passwordAgain" [(ngModel)]="passwordAgain" name="passwordAgain" required placeholder="Password again">
-        <input type="submit" value="Sign Up!">
+        <button type="submit" class="submit-button">Sign Up!</button>
     </form>
 </div>

@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style for the navbar */
+.navbar {
+    background-color: #333; /* Background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px; /* Adjust the height as needed */
+}
+
+/* Style for the navbar buttons */
+.navbar-button {
+    background-color: #007BFF; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px; /* Add horizontal spacing between buttons */
+    text-decoration: none; /* Remove underlines for buttons */
+}
+
+/* Change button color on hover */
+.navbar-button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}

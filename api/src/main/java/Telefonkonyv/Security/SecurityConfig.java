@@ -23,6 +23,7 @@ public class SecurityConfig{
         http.authorizeHttpRequests()
                 .requestMatchers("/contacts/**").authenticated()
                 .requestMatchers("/createOwner").permitAll()
+                .requestMatchers("/login").permitAll()
                 .and()
                 .csrf().disable()
                 .cors().and().httpBasic();

@@ -26,7 +26,9 @@ export class LoginComponent implements OnInit{
       this.invalidLogin = false;
       this.loginSuccess = true;
       this.successMessage = "Login Successful";
+      console.log(this.successMessage);
       console.log(result);
+      localStorage.setItem('authenticated', 'true');
     }, (error) =>{
       this.invalidLogin = true;
       this.loginSuccess = false;

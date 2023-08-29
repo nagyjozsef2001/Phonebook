@@ -20,7 +20,10 @@ export class ContactsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.loadAllContacts();
+    if(this.authservice.isAuthenticated()){
+      this.authservice.options=this.authservice.getStoredCredentials();
+      this.loadAllContacts();
+    }
   }
 
   loadAllContacts(){

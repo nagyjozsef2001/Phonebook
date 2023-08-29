@@ -51,7 +51,7 @@ export class FormComponent implements OnInit{
     else{
       this.submitUpdate();
     }
-    this.redirect.navigate(['/']);
+    this.redirect.navigate(['/contacts']);
   }
 
   submitUpdate(){

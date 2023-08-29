@@ -18,8 +18,10 @@ export class AuthService {
       withCredentials: true 
     };
     return this.http.get( "http://localhost:3000/login",this.options).pipe(map((res) => {
-        this.registerSuccessfulLogin(username, password);
-        console.log(res);
+        // console.log(res);
+        localStorage.setItem('authenticated', 'true');
+        localStorage.setItem('credentials', JSON.stringify(this.options));
+        console.log(JSON.stringify(this.options));
       }));
   }
 
@@ -27,8 +29,17 @@ export class AuthService {
     return 'Basic ' + window.btoa(username + ":" + password);
   }
 
-  registerSuccessfulLogin(username: string, password: string) {
-    localStorage.setItem('authenticatedUser', username);
-    console.log("setting up session");
+  logout() {
+    localStorage.removeItem('authenticated');
+    localStorage.removeItem('credentials');
+  }
+
+  isAuthenticated(): boolean {
+    return localStorage.getItem('authenticated') === 'true';
+  }
+
+  getStoredCredentials(): any {
+    const storedCredentials = localStorage.getItem('credentials');
+    return storedCredentials ? JSON.parse(storedCredentials) : null;
   }
 }

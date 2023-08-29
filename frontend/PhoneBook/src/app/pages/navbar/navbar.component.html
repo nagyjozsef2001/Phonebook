@@ -1,4 +1,5 @@
 <nav class="navbar">
-        <button class="navbar-button" (click)="login()">Login</button>
-        <button class="navbar-button" (click)="register()">Register</button>
+        <button class="navbar-button" *ngIf="!isAuthenticated()" (click)="login()">Login</button>
+        <button class="navbar-button" *ngIf="!isAuthenticated()" (click)="register()">Register</button>
+        <button class="navbar-button" *ngIf="isAuthenticated()" (click)="logout()">Logout</button>
 </nav>

@@ -22,7 +22,7 @@ export class RegistrationComponent {
       email: this.email,
       password: this.password
     }
-    if(this.password !== this.passwordAgain){
+    if(this.password !== this.passwordAgain){ //checing if the passwords are matching
       console.log("The passwords does't match!");
     }
     else{

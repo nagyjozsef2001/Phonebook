@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent{
   username:string="";
   password:string="";
   errorMessage:string = "Invalid Credentials";
@@ -16,9 +16,6 @@ export class LoginComponent implements OnInit{
   loginSuccess:boolean = false;
 
   constructor(private authservice:AuthService, private router:Router){
-  }
-
-  ngOnInit(): void {
   }
 
   handleLogin(){

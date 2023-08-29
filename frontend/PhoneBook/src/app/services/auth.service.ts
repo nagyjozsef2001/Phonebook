@@ -19,9 +19,9 @@ export class AuthService {
     };
     return this.http.get( "http://localhost:3000/login",this.options).pipe(map((res) => {
         // console.log(res);
-        localStorage.setItem('authenticated', 'true');
-        localStorage.setItem('credentials', JSON.stringify(this.options));
-        console.log(JSON.stringify(this.options));
+        localStorage.setItem('authenticated', 'true'); //if we are logged in storing a true value here just to make authorization possible
+        localStorage.setItem('credentials', JSON.stringify(this.options)); //saving the credentials, it needed if we want to be able to refresh the page without re login, to have better security we need to implenet jwt auth
+        // console.log(JSON.stringify(this.options));
       }));
   }
 

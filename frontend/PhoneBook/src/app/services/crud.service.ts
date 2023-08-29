@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CrudService {
+export class CrudService { //just the crud operations
 
   constructor(private http:HttpClient, private authService: AuthService) { }
 

@@ -21,13 +21,13 @@ export class ContactsComponent implements OnInit{
 
   ngOnInit(): void {
     
-    if(this.authservice.isAuthenticated()){
+    if(this.authservice.isAuthenticated()){ //if we have logged in then load the user account
       this.authservice.options=this.authservice.getStoredCredentials();
       this.loadAllContacts();
     }
   }
 
-  loadAllContacts(){
+  loadAllContacts(){ //to get all the contacts
     this.crudService.getAllContacts().subscribe((result:any) => {
       this.contactList = result;
     })
@@ -37,23 +37,22 @@ export class ContactsComponent implements OnInit{
     this.crudService.deleteContact(id).subscribe((result) =>{
       console.log(result);
     });
-    location.reload();
   }
 
-  openModify(id:number) {
+  openModify(id:number) { //if we want to modify a contact then we need to go to forms component
     this.router.navigate(['/form'], {queryParams: {contactId:id}});
 
   }
 
-  createContact(){
+  createContact(){//if we want to create a contact then we need to go to forms component
     this.router.navigate(['/form'], { queryParams : { contactId: 'post' }});
   }
 
-  onSearchTextEntered(searchValue: string){
+  onSearchTextEntered(searchValue: string){ //the searchbar uses it, this is what we type in the searchbar
     this.searchText=searchValue;
   }
 
-  onSearchTypeChanged(text: string){
+  onSearchTypeChanged(text: string){ ////the searchbar uses it, this is the option we select
     this.searchType=text;
   }
   

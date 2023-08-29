@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class FormComponent implements OnInit{
 
 
-  applyForm = new FormGroup({
+  applyForm = new FormGroup({ //the structure of our form
     phoneNumber: new FormControl(''),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -40,11 +40,11 @@ export class FormComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.task=params["contactId"];
+      this.task=params["contactId"];//reading the queryparameters
     });
   }
 
-  operationType(){
+  operationType(){ //we check here what we need to do, we use this component to modify and to create
     if(this.task === "post"){
       this.submitCreate();
     }
@@ -69,7 +69,7 @@ export class FormComponent implements OnInit{
 
   }
 
-  initialize_contact_obj(){
+  initialize_contact_obj(){ //initializing the objects with the values typed in the form
     this.createContact = {
       phoneNumber:this.applyForm.value.phoneNumber ?? '',
       firstName: this.applyForm.value.firstName ?? '',

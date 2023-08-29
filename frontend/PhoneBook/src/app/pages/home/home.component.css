@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style for the header section */
+header {
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* Style for the main content section */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style for the project description */
+.project-description {
+    margin-top: 20px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Style for the footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Center the email address */
+footer p:first-child {
+    margin-bottom: 10px;
+}
+
+/* Add space between elements in the footer */
+footer p {
+    margin: 5px 0;
+}
+
+.project-description h2 {
+    font-size: 24px;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+/* Style for the project description content */
+.project-description p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Style for emphasis using the <b> tag */
+.project-description b {
+    font-weight: bold;
+    color: #007BFF;
+}

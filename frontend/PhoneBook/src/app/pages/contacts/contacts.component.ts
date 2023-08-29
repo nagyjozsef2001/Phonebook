@@ -37,6 +37,7 @@ export class ContactsComponent implements OnInit{
     this.crudService.deleteContact(id).subscribe((result) =>{
       console.log(result);
     });
+    location.reload();
   }
 
   openModify(id:number) { //if we want to modify a contact then we need to go to forms component

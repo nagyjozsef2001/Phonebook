@@ -2,33 +2,40 @@ package Telefonkonyv;
 
 import Telefonkonyv.DataJPA.Address;
 import Telefonkonyv.DataJPA.Contacts;
+import Telefonkonyv.DataJPA.Owner;
+import Telefonkonyv.Repositories.AddressRepository;
+import Telefonkonyv.Repositories.ContactRepository;
+import Telefonkonyv.Repositories.OwnerRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/contacts")
 public class Controller {
     private final ContactRepository contactRepository;
     private final AddressRepository addressRepository;
+    private final OwnerRepository ownerRepository;
 
-    public Controller(ContactRepository contactRepository, AddressRepository addressRepository) {
+    public Controller(ContactRepository contactRepository, AddressRepository addressRepository, OwnerRepository ownerRepository) {
         this.contactRepository = contactRepository;
         this.addressRepository=addressRepository;
+        this.ownerRepository=ownerRepository;
     }
 
-    @GetMapping("/{requestedId}")
-    public ResponseEntity<Contacts> getContact(@PathVariable Integer requestedId){
-        Optional<Contacts> optContact = contactRepository.findById(requestedId); //get by id
+    @GetMapping("contacts/{requestedId}")
+    public ResponseEntity<Contacts> getContact(@PathVariable Integer requestedId, Principal principal){
+        Optional<Contacts> optContact = Optional.ofNullable(contactRepository.findByContactId(requestedId,principal.getName())); //get by id
         if (optContact.isPresent()) { // if there is a result
             Contacts contact=optContact.get();
             return ResponseEntity.ok(contact); //return ok(200) and the result
@@ -37,32 +44,42 @@ public class Controller {
         }
     }
 
-    @GetMapping
-    public ResponseEntity<List<Contacts>> findAll(Pageable pageable) {
-        Page<Contacts> page = contactRepository.findAll(
+    @GetMapping("/contacts")
+    public ResponseEntity<List<Contacts>> findAll(Pageable pageable, Principal principal) {
+        Page<Contacts> page = contactRepository.findByOwner(principal.getName(),
                 PageRequest.of(
                         pageable.getPageNumber(),
-                        pageable.getPageSize()/*,
-                        pageable.getSortOr(Sort.by(Sort.Direction.ASC, "amount"))*/
+                        pageable.getPageSize()
                 ));
         return ResponseEntity.ok(page.getContent());
     }
 
-    @PostMapping
-    private ResponseEntity<Void> createContact(@RequestBody Contacts newContact, UriComponentsBuilder ucb) { //the body contains the new object
+    @PostMapping("/contacts/createContact")
+    private ResponseEntity<Void> createContact(@RequestBody Contacts newContact, UriComponentsBuilder ucb, Principal principal) { //the body contains the new object
         Address address=newContact.getAddress();
         if (address!=null){
             addressRepository.save(address);
             newContact.setAddress(address);
         }
+        Owner principalOwner = ownerRepository.findIdByEmail(principal.getName());
+        newContact.setOwner(principalOwner);
         Contacts addContact = contactRepository.save(newContact); //save the new object
-        URI locationOfNewContact = ucb.path("contacts/{id}").buildAndExpand(addContact.getAddress()).toUri(); //get the location of the new object
+        URI locationOfNewContact = ucb.path("contacts/{id}").buildAndExpand(addContact.getId()).toUri(); //get the location of the new object
         return ResponseEntity.created(locationOfNewContact).build(); //created response(201) and return the location of the new contact
     }
 
-    @PutMapping("/{requestedId}")
-    private ResponseEntity<Void> putContact(@PathVariable Integer requestedId, @RequestBody Contacts contactUpdate) {
-        Optional<Contacts> optContact = contactRepository.findById(requestedId);
+    @PostMapping("/createOwner")
+        private ResponseEntity<Void> createOwner(@RequestBody Owner newOwner, UriComponentsBuilder ucb) { //the body contains the new object
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            newOwner.setPassword(passwordEncoder.encode((newOwner.getPassword())));
+            Owner saveOwner= ownerRepository.save(newOwner);
+            URI locationOfNewOwner = ucb.path("contacts/{id}").buildAndExpand(saveOwner.getId()).toUri(); //get the location of the new object
+            return ResponseEntity.created(locationOfNewOwner).build(); //created response(201) and return the location of the new contact
+    }
+
+    @PutMapping("/contacts/{requestedId}")
+    private ResponseEntity<Void> putContact(@PathVariable Integer requestedId, @RequestBody Contacts contactUpdate, Principal principal) {
+        Optional<Contacts> optContact = Optional.ofNullable(contactRepository.findByContactId(requestedId, principal.getName()));
         if (optContact.isPresent()) {
             Contacts contact=optContact.get();
             Address address=contactUpdate.getAddress();
@@ -81,9 +98,9 @@ public class Controller {
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
-    private ResponseEntity<Void> deleteContact(@PathVariable Integer id) {
-        Optional<Contacts> optContact = contactRepository.findById(id);
+    @DeleteMapping("/contacts/{id}")
+    private ResponseEntity<Void> deleteContact(@PathVariable Integer id, Principal principal) {
+        Optional<Contacts> optContact = Optional.ofNullable(contactRepository.findByContactId(id, principal.getName()));
         if (optContact.isEmpty()) {
             return ResponseEntity.notFound().build();
         }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from 'src/app/services/crud.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class ContactsComponent implements OnInit{
 
   searchType: string = 'byName';
 
-  constructor(private crudService: CrudService, private router:Router){
+  constructor(private crudService: CrudService, private router:Router, private authservice:AuthService){
   }
 
   ngOnInit(): void {

@@ -10,17 +10,20 @@
             <p class="contact-email">{{contact.email}}</p>
             <p class="contact-phone">{{contact.phoneNumber}}</p>
             <p class="contact-notes">{{contact.notes}}</p>
+            <br>
+            <p>Address: </p>
             <div class="ifexist" *ngIf="contact.address">
-                <p class="address-country">{{contact.address.country}}</p>
-                <p class="address-postalcode">{{contact.address.postalCode}}</p>
-                <p class="address-shire">{{contact.address.shire}}</p>
-                <p class="address-city">{{contact.address.city}}</p>
-                <p class="address-street">{{contact.address.street}}</p>
-                <p class="address-number">{{contact.address.number}}</p>
-                <p class="address-stairs">{{contact.address.stairs}}</p>
-                <p class="address-floor">{{contact.address.floor}}</p>
-                <p class="address-apartment">{{contact.address.apartment}}</p>
+                <p class="address-item">{{contact.address.country}}</p>
+                <p class="address-item">{{contact.address.postalCode}}</p>
+                <p class="address-item">{{contact.address.shire}}</p>
+                <p class="address-item">{{contact.address.city}}</p>
+                <p class="address-item">{{contact.address.street}}</p>
+                <p class="address-item">{{contact.address.number}}</p>
+                <p class="address-item">{{contact.address.stairs}}</p>
+                <p class="address-item">{{contact.address.floor}}</p>
+                <p class="address-item">{{contact.address.apartment}}</p>
             </div>
+            <br>
             <button class="modify-button" (click)="openModify(contact.id)">Edit!</button>
             <button class="delete-button" (click)="deleteAContact(contact.id)">Delete!</button>
         </div>

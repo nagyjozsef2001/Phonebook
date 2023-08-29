@@ -74,4 +74,29 @@ body, h2, p {
     background-color: #0056b3;
 }
 
+.contact-notes {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  /* Style for address section */
+  .ifexist {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Style for individual address items */
+  .address-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .address-item {
+    font-size: 14px;
+    margin: 5px 0;
+    font-family: 'Roboto', sans-serif;
+  }
 

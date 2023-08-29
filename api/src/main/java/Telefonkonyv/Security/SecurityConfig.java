@@ -20,8 +20,10 @@ import java.util.Arrays;
 public class SecurityConfig{
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http.authorizeHttpRequests().requestMatchers("/**")
-                .authenticated().and()
+        http.authorizeHttpRequests()
+                .requestMatchers("/contacts/**").authenticated()
+                .requestMatchers("/createOwner").permitAll()
+                .and()
                 .csrf().disable()
                 .cors().and().httpBasic();
         return http.build();

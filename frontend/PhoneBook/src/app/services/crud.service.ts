@@ -25,5 +25,9 @@ export class CrudService {
   deleteContact(id:number):Observable<any>{
     return this.http.delete<any>(`http://localhost:3000/contacts/${id}`, this.authService.options);
   }
+
+  submitCreateOwner(obj:any):Observable<any>{
+    return this.http.post<any>(`http://localhost:3000/createOwner`, obj);
+  }
   
 }

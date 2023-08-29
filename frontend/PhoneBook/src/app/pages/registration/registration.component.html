@@ -1,0 +1,8 @@
+<div class="registraion-container">
+    <form (ngSubmit)="handleRegistration()">
+        <input type="text" id="email" [(ngModel)]="email" name="email" required placeholder="Email" >
+        <input type="password" id="password" [(ngModel)]="password" name="password"  required placeholder="Password">
+        <input type="password" id="passwordAgain" [(ngModel)]="passwordAgain" name="passwordAgain" required placeholder="Password again">
+        <input type="submit" value="Sign Up!">
+    </form>
+</div>
